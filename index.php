@@ -202,7 +202,7 @@ function control($calledfile ='', $startDate = '', $endDate = '', $password = ''
                      : 'IP ' . $_SERVER['REMOTE_ADDR'];
 
             if ($password && $_POST['dlcontrolpw' . $file_id] != trim($password)) {
-                $error = $tx['heading']['error'];
+                $error = $ptx['error_password'];
             }
 
             if ($askname && strlen($_POST['dlcontrolname' . $file_id]) >= 6) {

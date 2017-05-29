@@ -49,6 +49,7 @@ $plugin_tx['downloadcontrol']['check-htaccess_no_htaccess']="ohne .htaccess-Date
 $plugin_tx['downloadcontrol']['check-htaccess_subfolder_ok']=".htaccess-Datei im Unterordner <b>%s</b> gefunden, d.h. von diesem Ordner nur kontrollierte Downloads möglich";
 $plugin_tx['downloadcontrol']['error_shortcut']="Kurzaufruf {{{control %s}}} ohne Inhalte";
 $plugin_tx['downloadcontrol']['error_filename_not_unique']="Dateiname <b>%s</b> kommt mehrfach vor";
+$plugin_tx['downloadcontrol']['error_password']="FEHLER";
 $plugin_tx['downloadcontrol']['file_all_versions']="alle Versionen";
 $plugin_tx['downloadcontrol']['file_date']="Letzte Änderung";
 $plugin_tx['downloadcontrol']['file_downloads']="Down&shy;loads";

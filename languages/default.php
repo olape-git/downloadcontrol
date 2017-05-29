@@ -49,6 +49,7 @@ $plugin_tx['downloadcontrol']['check-htaccess_no_htaccess']="without .htaccess f
 $plugin_tx['downloadcontrol']['check-htaccess_subfolder_ok']=".htaccess file found in subfolder <b>%s</b>, i.e. only controlled downloads possible from this folder";
 $plugin_tx['downloadcontrol']['error_shortcut']="Short cut call {{{control %s}}} without contents";
 $plugin_tx['downloadcontrol']['error_filename_not_unique']="Filename <b>%s</b> not unique";
+$plugin_tx['downloadcontrol']['error_password']="ERROR";
 $plugin_tx['downloadcontrol']['file_all_versions']="all versions";
 $plugin_tx['downloadcontrol']['file_date']="Last Change";
 $plugin_tx['downloadcontrol']['file_downloads']="Down&shy;loads";
