@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Downloadcontrol" default="help">
+
+    <target name="help" description="lists available targets">
+        <exec command="phing -l" outputProperty="help"/>
+        <echo>${help}</echo>
+    </target>
+
+    <target name="build" description="builds distributable ZIP archive">
+        <fail unless="version" message="version is not defined!"/>
+        <exec command="git archive -o export.tar HEAD" checkreturn="true"/>
+        <untar file="export.tar" todir="export"/>
+        <delete file="export.tar"/>
+        <move todir="dist/plugins/downloadcontrol">
+            <fileset dir="export">
+                <exclude name="build.xml"/>
+                <exclude name="composer.*"/>
+                <exclude name="pax_global_header"/>
+                <exclude name="README.md"/>
+            </fileset>
+        </move>
+        <mkdir dir="dist/userfiles/plugins/downloadcontrol"/>
+        <copy file="dist/plugins/downloadcontrol/htaccess.txt"
+              tofile="dist/userfiles/plugins/downloadcontrol/.htaccess"/>
+        <mkdir dir="dist/userfiles/downloads/protected"/>
+        <copy file="dist/plugins/downloadcontrol/htaccess.txt"
+              tofile="dist/userfiles/downloads/protected/.htaccess"/>
+        <delete dir="export"/>
+        <zip destfile="downloadcontrol_XH_${version}.zip" basedir="dist"/>
+        <delete dir="dist"/>
+    </target>
+
+</project>
