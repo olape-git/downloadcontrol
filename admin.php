@@ -1019,14 +1019,14 @@ function Downloadcontrol_showColors()
 {
     global $plugin_cf;
 	$o = '';
-    $plugin_cf['downloadcontrol']['downloadcontrol_base_folder'] = '../images/flags/';
+	$plugin_cf['downloadcontrol']['downloadcontrol_base_folder'] = '../images/flags/';
 
     $o .= '<hr><br>';
-    $o .= 'button:<br>{{{control "de.gif","","","","button"}}}' . '<br>';
-    $o .= 'button2:<br>{{{control "de.gif","","","","button2"}}}' . '<br>';
-    $o .= 'small:<br>{{{control "de.gif","","","","small"}}}' . '<br>';
-    $o .= 'inline:<br>{{{control "de.gif","","","","inline"}}}' . '<br>';
-    $o .= 'password:<br>{{{control "de.gif","","","test"}}}' . '<br>';
-    $o .= 'table:<br>{{{control "de.gif,da.gif,en.gif"}}}';
-    return evaluate_scripting($o);
+    $o .= 'button:<br>' . control("de.gif","","","","button") . '<br>';
+    $o .= 'button2:<br>' . control("de.gif","","","","button2") . '<br>';
+    $o .= 'small:<br>' . control("de.gif","","","","small") . '<br>';
+    $o .= 'inline:<br>' . control("de.gif","","","","inline") . '<br>';
+    $o .= 'password:<br>' . control("de.gif","","","test") . '<br>';
+    $o .= 'table:<br>' . control("de.gif,da.gif,en.gif");
+    return $o;
 }
