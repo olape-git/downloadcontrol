@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Downloadcontrol_XH</title>
+<style type="text/css">
+body {background: #eaf4fb; font: normal normal normal 12pt/1.6 'trebuchet MS',sans-serif}
+.notice {margin-left:3em; font-style:italic; color:#050; font-size:92%;}
+.new {margin:0 0 0 3em;font-size:92%; color:#400}
+code {font-family: consolas, 'courier new', monospace; font-weight:bold; font-size: 90%; color:#900;}
+body div.main {width: 960px; margin: 3em auto; background: #eee; border: 1px solid #5ab; padding: 0;box-shadow: 0em 0em 2em 0em #bbd;border-radius: 4.5em;}
+body div.main div.main2 {width: 740px; margin: 30px auto; background: #fff; border: 2px solid #8de; padding: 1em 76px 3em;border-radius: 3em;}
+p {margin:0 0 1em 0;}
+em, b, strong {font-weight: bold; color:#008;letter-spacing:1px;}
+.red {color:red;font-weight:bold;}
+h2, h3, h4, h5, h6 {font-family: Georgia; color: #06a;margin:3em 0 .7em;}
+h4 {margin:0;}
+h5 {margin:0 0 2em;}
+h1 {font: normal normal 30pt Georgia, 'Times new roman', serif;margin:1em 0 0;color: #068; }
+.indent {margin-left:5em;opacity:.8;}
+</style>
+
+
+</head>
+<body>
+<div class="main">
+<div class="main2">
+<h1>Downloadcontrol_XH 1.7</h1>
+<p>for CMSimple_XH Version 1.6 or higher<br><br></p>
+
+
+<p>Downloadcontrol allows different
+types of control and documentation for the download of files and groups of files, which you would like to offer on your website.
+Files from .htaccess-protected folders can also be offered via Downloadcontrol. As these file are not accessible via
+URL, Downloadcontrol is useful for offering protected files on pages
+with restricted access by e.g. memberpages.</p>
+
+<h4><b>New in 1.7:</b></h4>
+<ul>
+<li>Can be used together with or as graphical interface for Christoph Becker's Dlcounter_XH, logs of both plugins can be synchonised</li>
+ <li>Plugin call short cuts</li>
+ <li>Check if .htaccess is present</li>
+     <li>Log and counting files now stored in <code>userfiles/plugins/downloadcontrol/</code>. During the update the log and counter are copied to the new destination.</li>
+<li>Differentiates between downloads of all version of versioned files and of the current version</li>
+ <li>Table display available for downloads</li>
+ <li>Greatly enlarged config possibilities</li>
+</ul>
+<h4><b>Updating</b></h4>
+<p>Copy the unzipped package into the CMSimple_XH base folder. The old plugin downloadcontrol will be overwritten.
+Go to the plugin backend, and a new config file will be created, keeping your old settings. Check if Downloadcontrol displays your data as it used to in the old version; now you may delete the old log files in the plugin folder.</p>
+
+
+
+<h3>The Downloadcontrol Base Folder and File Protection</h3>
+<p>Downloadcontrol need to know where it should look for the files which are called for download.
+Therefore a base folder has to be set. If there is no entry for the base folder in plugin config,
+the standard download folder will be regarded as base folder. On installing Downloadcontrol
+a folder named <code>protected</code> which is a subfolder of the standard download folder will be created
+together with a .htaccess file. This .htaccess file prevents downloading any file from the folder via
+typing in the URL in a web browser. (However this works only on Apache webservers. If your site
+uses another webserver, you have to set the protection manually yourself.)</p>
+
+<p>If you install Downloadcontrol for the first time, the default setting is:<br>
+Standard download folder as
+base folder and <code>protected</code> as a protected subfolder.
+<br>(Cons: no real control of the download folder, your stats may not be correct, but you can still use the
+download folder for standard downloads without Downloadcontrol.)
+ </p>
+
+ <p>This setting is a compromise which you may want to change, either by moving the .htaccess file
+to the standard download folder (then you will get full control of all downloads, however
+simple downloads without Donwloadcontrol won't work any more)
+or by setting the <code>protected</code> folder as base folder
+(your stats will be correct, but look only at the protected folder
+and its subfolders. Standard download from the downloadfolder is still working as before).
+All three possibilities have pros aṇd cons.</p>
+
+<p>Please keep in mind that changing the Downloadcontrol base folder means changing
+<b>the paths to the called files</b> in all
+Downloadcontrol plugin calls.</p>
+
+
+
+<h3>Plugin call short cuts</h3>
+<p>The backend offers plugin call short cuts via a number. A click on the number opens an area with all selectable files
+and display options. Using the short cut, you don't have to worry about the correct spelling of file names and using the correct call arguments.</p>
+<p>In config you can set the number of available short cuts.
+In the plugin call give the short cut number as argument, e.g. for short cut 1:<br><code>{{{control 1}}}</code></p>
+<p>The plugin checks it the first argument is a number. If it is, it will look for the prepared plugin call.
+If no corresponding preparation can be found, an error message will be displayed.</p>
+
+
+
+<h3>Log, Download Counting, and Email Alert</h3>
+
+<p><b>Log</b><br>Downloadcontrol_XH keeps a log of downloaded files, with date/time and
+name of the downloader (via Memberpages_XH/Register_XH or asking for the name before the download)
+or IP address if no name is available.<br>
+The log can be synchronised with the <b>log of Dlcounter_XH.</b> The synchroniser button will appear if Downloadcontrol detects Dlcounter_XH.
+Clicking the button will add those entries from one log to the respective other, which are not found in the other log. It will
+also ajust the counter in Downloadcontrol_XH.</p>
+
+<p><b>Double Download Counter </b><br>
+You can select to display the counts of the offered file or of "all versions" of that file.
+What does that mean? Say, you offer the download myfile_1.4.zip and until now there were only
+3 downloads. However there were 100 download of myfile_1.2.zip.
+If you select to show the download of "this file",  the counter will show a meager 3 downloads. So you may prefer to
+show "all versions", i.e. 103 downloads. However you may have another file without versioning. Doesn't matter,
+the counter "all versions" will only show combined version downloads, if they exist, otherwise it will
+show the downloads of the one and only version.
+So in most cases the best setting is "all downloads".
+However if you want to inform your users very correctly, select both, "this file" and "all versions".
+If there are no other versions of a file, "all versions" will either not be displayed or, in a table, a hyphen will be given.<p>
+</p>
+The downloads per file are counted in an "ini"-style file, which is directly editable so that the start numbers can be adjusted.
+You have to enter the character that separates file name from version number (usually <code>_</code>)
+in config, to activate the "all versions"-counting.
+To start this counting, go to "Log analysis" and click either "calculate totals", or "generate new count".</p>
+<p>P.S. The "ini" format of the counter file
+(every line goes: <code>key = value</code>) means that the chars <code>?{}|&~!()^"#;</code>
+have special meaning and cannot be used as keys. Therefore the plugin converts these characters,
+if they occur in filenames,
+to <code>_</code>. These characters can nevertheless
+still be used as file names, only they will be listed in the backend counter with <code>_</code>
+in place of these characters.</p>
+
+<p><b>Email alert</b><br>In plugin config you can set that an email with the log record
+will be sent to you when a download is initiated.</p>
+
+
+
+<h3>Plugin call</h3>
+<p>
+<code>{{{control 'filename(s)/foldername/shortcutnumber' ,'startdate', 'enddate', 'password', 'linkstyle', 'askname/location' }}}</code><br>
+All arguments are optional.</p>
+<ul>
+ <li><b>filename(s)/foldername/shortcutnumber</b> Enter one or several comma separated file names,
+ or the name of a subfolder of the Downloadcontrol base folder (If empty, all files of the Downloadcontrol base folder will be displayed), or
+ the number of one of the prepared short cuts.</li>
+ <li><b>startdate and enddate</b> download displays can be controlled by giving the begin and end date when the download is possible in the plugin
+call as 2nd and 3rd arguments. Date formats must be readable by PHP,
+e.g. <b>d.m.Y , Y-m-d , m/d/Y</b>, days/months
+1 or 2 digits, years 4.</li>
+ <li><b>password</b> enter any password of your choice
+as 4th argument. The password must not contain any characters
+reserved for programming logic (<code>>"'&lt;</code>). If 'password' is set to '1', a log-in via memberpages/register_XH is required instead of a password. If set to '0', no password will be asked, even if set in plugin config.</li>
+<li><b>linkstyle</b> single file download buttons can be styled as <code>button</code> (= large button),
+<code>button2</code> (= same in different color),
+<code>small</code> (= small button), <code>inline</code> (looks like normal link), <code>table</code> (even for only 1 file). If password or name/location is asked, a large button or table will be taken.</li>
+<li><b>askname/location</b> if set to 1 downloaders will be asked for their name and location. If you wish to have them enter their email address, just change the wording in the language file.</li>
+</ul>
+
+
+<h4>Number of times a file was downloaded</h4>
+<p><code>{{{controlcount 'filename'}}}</code><br>
+(Usually this function will hardly be used any more as automatic display of the number of downloads can be set in plugin config.) A simple Number will be returned. Even if the file is located in a subfolder of the protected folder, enter just the file name. <br><u>Please note:</u> different files with the same name in different subfolders are counted as one!</p>
+
+<h3>Examples</h3>
+
+<p>
+<code>{{{control 'myfile.doc','','','','button'}}}</code> <br>Large button for the download of
+./userfiles/downloads/protected/myfile.doc<br>
+<br>
+<code>{{{control 'myfile.doc,subfolder/myotherfile.doc','','','Hello'}}}</code><br>
+Password "Hello" will be demanded for the download of the above mentioned file and the file <br>
+./userfiles/downloads/protected/subfolder/myotherfile.doc<br><br>
+
+<code>{{{control '','1.1.2015','1.1.2017','','',1}}}</code><br>
+all files of the Downloadcontrol base folder will be offered for download between 1.1.2015 and 1.1.2017, while always asking for the name and location of the downloader.
+</p>
+
+
+
+
+<h3>History</h3>
+<p>Downloadcontrol was started by svasti as a simple add-on named ProtectedDownload.
+Holger Irmler made a Plugin from it. As there was already a plugin called protected_Download (by Emanuel Marinello),
+it was renamed by svasti to Downloadcontrol_XH and further developed (see history in changelog.txt).</p>
+-

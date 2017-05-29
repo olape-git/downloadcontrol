@@ -1,0 +1,81 @@
+===================================
+Downloadcontrol_XH
+(ex Protecteddownload)
+===================================
+
+History:
+
+1 (2013) published as CMSimple_XH add-on under the name 
+         Protecteddownload by svasti http://svasti.de
+1.1 errormessage added, code by cmb
+1.2 small change in download package
+1.3 filenames can contain spaces (e.g. MS-Word filenames)
+1.4 added .htaccess to download
+1.5 All chars and Windows-1252 encoding in filenames enabled
+
+October 2015
+- Protecteddownload was transformed in to a plugin by 
+  Holger Irmler http://cmsimple.holgerirmler.de
+- He added the possibility to send automatically a notification email
+  to an administrator when a download was started.
+- He also added date control of the download.
+
+1.6 - January 2016 by svasti again
+- Plugin renamed to Downloadcontrol_XH as already a plugin with
+  the name protected_Download_XH (by Emanuel Marinello, http://so-leicht.ch) existed.
+- Editable download counter added
+- Plugin call for number of downloads of a file added
+- Password controlled download possibility added
+- Log added, recording file, time and downloader's name or IP address, 
+  compatible with dlcounter_XH log
+- Log analysis added
+- Most recent log entries are displayd in plugin main
+- Help files added
+- Graph displaying the downloads of the last 30 days added
+- Download link can be
+    - big button
+    - small button
+    - inline link
+    - button asking for password
+    - button asking for downloader's name + location
+    - list of downloadable files of a folder 
+      (when a folder name is 1st argument of plugin call),
+      this list is displayed as inline links or small buttons.
+- Easy Update: Log and config files are not part of plugin package. 
+  They are generated on install if missing.
+  In case an old config file is found, its content is read 
+  and used for the generation of the new config file.
+- If files from subfolders of the protected folder are called, 
+  the subfolder will not be displayed any more in the link 
+  (was displayed in the older add-on version).
+
+1.6.1 - Feb 2016
+- Text input limited to 50 chars to avoid SPAM (suggestion by Ludwig)
+- Input field cleared (via javascript) after submit (suggestion by Ludwig)
+- New download button option where login via memberpages/register_XH is asked 
+  before downloading
+
+1.7 - July 2016
+- Checks if .htaccess is present in Downloadcontrol base folder or one of its subfolders. Checks also
+  if .htacces is present in log folder.
+- A short description of the plugin call is accessable via button click on backend plugin main page
+- Download offers also in table form as file lists, with selectable display
+  of date of last file change and number of downloads (suggested by Tata)
+- File lists in table layout not only from foldernames but also from comma separated file list
+- File list in table layout and single file downloads get separate config settings
+- File list can have same access restrictions (log-in, password, name/location of downloader, date control)
+  as single file download links
+- log etc now in userfiles/plugin/downloadcontrol,
+  during updating the old log files are checked and, if the new ones are empty, copied to the new location
+- edit view of counter file now opens together with log analysis, no separate log anaylsis button any more
+- Short cuts for plugin calls with checkbox interface in the backend
+- Sync possibility with Dlcounter_XH log
+- Writing to log now with flock
+- Tables responsive, fields collapse below 500px width viewport to inline blocks.
+- Bug-fix (thanx to mhz's testing) subfolders didn't work for short cut feature. Now added warning if file name
+  occurs more than once.
+- Added simple color selector for button and tables including color choice for an alternative button
+- Added defaultconfig.php so that no erromessages occur on installing the plugin
+
+
+

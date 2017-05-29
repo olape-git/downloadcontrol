@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Downloadcontrol_XH</title>
+<style type="text/css">
+body {background: #eaf4fb; font: normal normal normal 12pt/1.6 'trebuchet MS',sans-serif}
+.notice {margin-left:3em; font-style:italic; color:#050; font-size:92%;}
+.new {margin:0 0 0 3em;font-size:92%; color:#400}
+code {font-family: consolas, 'courier new', monospace; font-weight:bold; font-size: 90%; color:#900;}
+body div.main {width: 960px; margin: 3em auto; background: #eee; border: 1px solid #5ab; padding: 0;box-shadow: 0em 0em 2em 0em #bbd;border-radius: 4.5em;}
+body div.main div.main2 {width: 740px; margin: 30px auto; background: #fff; border: 2px solid #8de; padding: 1em 76px 3em;border-radius: 3em;}
+p {margin:0 0 1em 0;}
+em, b, strong {font-weight: bold; color:#008;letter-spacing:1px;}
+.red {color:red;font-weight:bold;}
+h2, h3, h4, h5, h6 {font-family: Georgia; color: #06a;margin:3em 0 .7em;}
+h4 {margin:0;}
+h5 {margin:0 0 2em;}
+h1 {font: normal normal 30pt Georgia, 'Times new roman', serif;margin:1em 0 0;color: #068; }
+.indent {margin-left:5em;opacity:.8;}
+</style>
+
+
+</head>
+<body>
+<div class="main">
+<div class="main2">
+<h1>Downloadcontrol_XH 1.7</h1>
+<p>für CMSimple_XH ab Version 1.6<br><br></p>
+
+<p>Mit Downloadcontrol kann man auf einer Website Dateien und Dateiengruppen auch aus geschützten Ordnern zum
+Download anbieten und diesen Download auf verschiedene Weise
+kontrollieren und dokumentieren.</p>
+
+<h4><b>Neu bei 1.7:</b></h4>
+<ul>
+<li>Kann mithilfe der Logsynchronisationsfunktion parallel mit Dlcounter_XH genutzt werden,
+oder auch einfach nur als graphische Anzeige für Dlcoutner_XH</li>
+ <li>Erleichterter Pluginaufruf durch Kurzaufruf-Vorbereitung im Backend</li>
+ <li>Überprüfung ob .htaccess existiert</li>
+ <li>Log- und Zähldateien jetzt unter <code>userfiles/plugins/downloadcontrol/</code> gespeichert.
+ Alte Log-Dateien werden beim Update selbstständig an neuen Ort kopiert.</li>
+ <li>Unterscheidet zwischen einfacher Zählung von Downloads und versionsübergreifender Zählung und kann die beiden
+ unterschiedlichen Werte anzeigen.</li>
+ <li>Darstellung angebotener Downloads auch bei Einzeldownloads in
+ Tabellenform</li>
+ <li>Stark erweiterte Konfig-Einstellungen</li>
+</ul>
+
+<h4><b>Updaten</b></h4>
+<p>Zip-Datei öffnen und in CMSimple-Basisordner kopieren. Das Plugin wird dann mit der neuen Version
+überschrieben mit Ausnahme der Konfig-, Log- und Zähldateien. Sobald man das Pluginbackend aufsucht,
+wird eine neue Konfigdatei unter Berücksichtigung alter Einstellungen generiert und die Log- und Zähldateien
+werden an den neuen Speicherplatz kopiert.</p>
+
+
+<h3>Der Schutz von Dateien</h3>
+<p>Dateien, die auf Ihrem Webserver unterhalb Ihrer Basis-URL liegen, können durch einfache Eingabe der
+vollständigen URL von jedem im Internet heruntergeladen werden, solange sie nicht speziell geschützt sind. Den
+Schutz stellt man im Webserver ein. Auf den meisten Webservern läuft das Apache-System, und dort genügt es, eine
+,htaccess-Konfigurationsdatei in einen Ordner zu legen, um alle Dateien dieses Ordners und aller seiner Unterordner
+gegen Herunterladen schützen. CMSimple_XH macht von dieser Möglichkeit viel Gebrauch um zu verhindern,
+dass Einstellungen ausspioniert werden.
+Läuft auf dem Webserver aber ein anderes System, z.B. Nginx oder Microsoft-IIS,
+dann muss man sich um den Dateischutz auf andere Art kümmern. Welcher Webserver genutzt wird,
+zeigt CMSimple_XH unter <code>Einstelluungen > Info</code> an.</p>
+
+<p>Diese .htaccess-Dateien benötigen weder Downloadcontrol_XH noch erfordert Downloadcontrol_XH das Vorhandensein von
+.htaccess. Mit Downloadcontrol_XH können Sie Dateien auch ohne .htaccess in ansprechender Form zum Download anbieten.
+Allerdings können dann diese Dateien auch durch direkte URL-Eingabe heruntergeladen werden, wobei das dann von
+Downloadcontrol_XH nicht mitgezählt wird. Darum bietet es sich an, Downloadcontrol_XH zusammen mit .htaccess zu nutzen.</p>
+
+<h3>Der Basisordner von Downloadcontrol</h3>
+<p>Downloadcontrol muss zuerst wissen, wo die anzubietenden Download-Dateien sind. Dieser Basisordner wird
+in der Konfig angeben. Ohne Angabe (so ist die Voreingestellung) ist dieser Ordner
+der normale Download-Ordner, jeder Eintrag wird als Unterordner des Standard-Download-Ordners angesehen. Bei der
+Installation von Downloadcontrol_XH wird außerdem als Unterordner des normalen
+Downloadoardners der Ordner <code>protected</code> erstellt,
+der eine .htaccess-Datei enthält.</p>
+
+<p>Die Voreinstellung hat allerdings zwei Nachteile:</p>
+<ol>
+ <li>Aus dem Downloads-Ordner kann weiterhin ohne Downloadcontrol heruntergeladen werden und diese Downloads werden
+dann nicht gezählt in der Download-Statistik.</li>
+ <li>Man muss für Downloads aus dem <code>protected</code>-Ordner
+ immer diesen Ordner im Downloadcontrol-Pluginaufruf angeben,
+ z.B. <code>{{{control 'protected/meineDatei.doc'}}}</code></li>
+</ol>
+<p>Stattdessen kann man die .htaccess-Datei aus dem protected-Ordner
+in den normalen Downloads-Ordner verschieben. Dann werden
+Downloads protokolliert und Downloads sind nur über Downloadcontrol (oder DLcounter_XH) möglich.</p>
+
+<p>Die andere Alternative ist, als Downloadcontrol-Basisordner den <code>protected</code>-Ordner einzustellen.
+Dann stimmt die Statistik, beschränkt sich aber auf Downloads aus dem <code>protected</code>-Ordner.
+Außerdem sind die Pluginaufrufe einfacher.
+Gleichzeitig kann man den Standard-Downloads-Ordner für einfache Downloads, wie pdfs, weiter nutzen.</p>
+
+<p>Zu beachten ist, dass sich bei einer Änderung des Basis-Ordners in allen
+Downloadcontrol-Pluginaufrufen <b>die Pfadangaben ändern.</b> Die Zähldateien bleiben hingegen unverändert.</p>
+
+
+<h3>Plugin-Kurzaufrufe</h3>
+<p>Nutzt man die Kurzaufrufe, braucht man sich über Datenpfade, Kommas und korrekte Schreibung der
+angebotenen Dateien keine Gedanken zu machen. Im Backend eine Nummer anklicken und die gewünschten Dateien und die
+Darstellungsform auswählen. </p>
+<p>Die Anzahl der Kurzaufrufe ist in der Konfig einstellbar. Der Pluginaufruf
+lautet entsprechend der gewählten Nummer, z.B. bei 1: <br><code>{{{control 1}}}</code></p>
+<p>Beim Pluginaufruf prüft das Plugin, ob das Argument eine Zahl ist.
+Trifft das zu, dann schaut es nach, welche Anweisungen und Downloads unter diesem Kurzaufruf hinterlegt sind.
+Findet es nichts, wird eine Fehlermeldung ausgegeben.</p>
+
+
+<h3>Log, Downloadzähldatei und E-Mail-Benachrichtigung</h3>
+<p><b>Log</b><br>Downloadcontrol führt Protokoll darüber, welche Datei wann von wem heruntergeladen wurde.
+Der Herunterladende wird entweder über Memberpages/Register_XH oder Namensnachfrage ermittelt,
+andernfalls wird die IP-Adresse
+aufgezeichnet.<br>
+Das Log kann durch Klick auf <code>Log-Sync</code> mit dem Log von Dlcounter_XH synchronisiert werden.
+Dabei werden in beide Logs die jeweils fehlenden Einträge in der richtigen Reihenfolge eingefügt. Außerdem
+wird die Zähldatei von Downloadcontrol_XH entsprechend der neuen Einträge ergänzt.</p>
+
+<p><b>Zähldatei</b><br>
+Unabhängig vom Log werden die Downloads pro Datei gezählt. Dateien gleichen Namens in unterscheidlichen
+Ordnern werden als eine Datei gezählt. Falls in der Konfig ein Separatorzeichen zwischen
+dem eigentlichen Dateinamen und der Versionsnummer eingegeben wurde, gibt es zusätzlich einer
+versionsübergreifenden Zählung für entsprechende Dateien.</p>
+<p>Auch wenn man eingestellt hat, den Besuchern immer die versionsübergreifende
+Zählung zu zeigen, versucht das Plugin ein
+möglichst vernünftiges Ergebnis zu liefern, und wenn es diese Zählung bei einer
+Datei nicht gibt, wird stattdessen die normale Zählung genommen.<p>
+</p>
+Die Zähldatei ist im Backend editierbar, ihr Format ist vom
+Typ "ini" (d.h. zeilenweise Schlüssel[Dateiname] = Anzahl). Da die Zeichen <code>?{}|&~!()^"#;</code>
+eine spezielle Bedeutung haben,
+werden diese in der Liste intern zu <code>_</code> umgewandelt. Diese Zeichen können in Dateinahmen
+trotzdem verwandt werden,
+werden aber im Backend-Zähler aus genannten Grund nicht dargestellt.</p>
+
+<p><b>E-Mail-Benachrichtigung</b><br>
+Auf Wunsch kann bei jedem Download eine entsprechende E-Mail an einen Administrator verschickt werden.</p>
+
+
+<h3>Pluginaufruf</h3>
+<p>
+<code>{{{control 'Datei(en)/Ordner' , 'Startdatum' ,
+'Enddatum' , 'Passwort' , 'Linkstil' , 'Namen/Ortnachfrage'}}}</code></p>
+<ul>
+     <li>Alle Argumente sind fakultativ, ungenutzte Argumente nach einem Argument weglassen, und vor einem
+     Argument als <code>'',</code> schreiben.</li>
+<li><b>Dateien/Ordner:</b> wenn leer, wird der Downloadcontrol-Basisordner genommen.
+Mehrere Dateien durch Kommas ohne zusätzliche Leerzeichen trennen. </li>
+     <li><b>Startdatum und Enddatum:</b> Ein von PHP verstandenes Format wählen,
+z.B.: <b>Tag.Monat.Jahr</b> oder <b>Jahr-Monat-Tag</b>
+oder <b>Monat/Tag/Jahr</b> , wobei 'Jahr'
+vierstellig sein sollte und 'Tag' und 'Monat' ein oder zweistellig.
+(Start und Ende funktioniert nicht für ganze Ordner).</li>
+     <li><b>Passwort:</b> Beliebige
+Zeichenkombinationen ohne programmierspezifischen Zeichen (<code>>"'&lt;</code>).
+Gibt man bei Passwort 1 ein, wird Log-in (via Memberpages/Register_XH) statt Passwort verlangt.
+Wird eine 0 eingegeben,
+wird kein Password angefordert, auch wenn das in der Konfig eingeschaltet ist.</li>
+<li><b>Link-Aussehen bzw. Stil:</b> Mögliche Argumente sind
+<code>button</code> (für größerern Button), <code>button2</code> (dasselbe in anderer Farbe),
+<code>small</code> (kleinen Button), <code>inline</code> (Aussehen
+wie normaler Link), <code>table</code> (Tabellendarstellung wie für mehrere Links). Wenn Passwort oder
+Namens/Ort-Abfrage eingestellt sind, wird ein großer Button oder die Tabelle genommen.</li>
+<li><b>Namen/Ortnachfrage:</b> Bei Eingabe von 1, wird nach dem Namen und Ort des Downloaders gefragt,
+bei Eingabe von 0 nicht, unabhängig von der Konfig-Einstellung.
+Will man stattdessen nach der E-Mail-Adresse fragen,
+muss man den Text in der Sprachdatei entsprechend ändern.</li>
+</ul>
+
+
+
+<h4>Anzahl der Downloads einer Datei</h4>
+<p><code>{{{controlcount 'Dateinamen'}}}</code><br>
+Diese Funktion wird ab Version 1.7 eher selten gebraucht, da über die Konfig einstellbar.
+Eine einfache Zahl wird zurückgegeben. Auch bei Dateien in Unterordners des
+geschützen Ordners wird <b>immer nur der Dateinamen ohne Ordnernamen</b> erwartet.
+Darum werden verschiedene Dateien gleichen Namens in
+unterschiedlichen Unterordnern als eine Datei gezählt.</p>
+
+<h3>Beispiele für herkömmliche Pluginaufrufe</h3>
+<p>
+<code>{{{control 'meineDatei.doc','','','','button'}}}</code> <br>Großer Button zum Download von 
+./userfiles/downloads/protected/meineDatei.doc<br>
+<br>
+<code>{{{control 'meineDatei.doc,unterordner/meineanderedatei.doc','','','Hallo'}}}</code><br>
+Passwort "Hallo" wird verlangt für den Download der oben genannten Datei und auch
+von <br>./userfiles/downloads/protected/unterordner/meineanderedatei.doc<br><br>
+
+<code>{{{control '','1.1.2015','1.1.2017','','',1}}}</code><br>
+Alle Dateien des Downloadcontrol-Basisordners werden zwischen 1.1.2015 und 1.1.2017 zum Download
+angeboten, wobei immer nach Name und Wohnort des Downloaders gefragt wird.
+</p>
+
+
+<h3>Geschichte</h3>
+<p>
+Das Plugin wurde entwickelt aus dem Add-On Protecteddownload
+von svasti, welches 2013 und bis Version 1.5 entwickelt wurde. Holger Irmler fügte 2015
+aufgrund einer Nutzeranfrage Zeitsteuerung und E-Mail-Benachrichtigung hinzu und machte daraus ein Plugin.
+Svasti entwickelte es anschließend weiter und änderte den Namen zu Downloadcontrol_XH 1.6,
+da es schon ein  Plugin namens protected_Download
+von Emanuel Marinello gab.</p>
+<p>Die vorliegende Version 1.7 wurde durch eine Nutzeranfrage von Tata angeregt. Vielen Dank fürs Testen an mhz.</p>

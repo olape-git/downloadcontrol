@@ -1,0 +1,194 @@
+.downloadcontrol {
+/* If you don't want centered buttons
+deleate the following line */
+    text-align:center;
+}
+
+/* If you want to change the color
+of the sandard downloadbutton, do it here, e.g.
+background-image: linear-gradient(to bottom, white 0%, crimson 100%); */
+.downloadcontrol button,
+.downloadcontrol div {
+    color:black;
+    background:#eee;
+    background-image: linear-gradient(to bottom, #fff 0%, #bbb 100%);
+    font-weight:bold;
+    padding:.4em 1em .6em;
+    border:2px outset #bbb;
+    border-radius: .7em;
+}
+.downloadcontrol button:hover,
+.downloadcontrol_small button:hover {
+    color:black;
+    background:#cef;
+    border-style:inset;
+}
+
+/* the color of the alternative button [button2] */
+.downloadcontrol.alt button {
+    color:white;
+    background:#465;
+    background-image: linear-gradient(to bottom, #8c9 0%, #241 100%);
+}
+.downloadcontrol.alt button:hover {
+    color:black;
+    background:#cfd;
+    border-style:inset;
+}
+
+
+.downloadcontrol button,
+.downloadcontrol_small button,
+.downloadcontrol div button {
+    cursor:pointer;
+}
+.downloadcontrol div {
+    display:inline-block;
+}
+.downloadcontrol_dl {
+    letter-spacing:.2em;
+}
+.downloadcontrol_dl:before {
+    content: "Download: \00a0";
+}
+.downloadcontrol_pw {
+    letter-spacing:0;
+}
+.downloadcontrol_pw button {
+    letter-spacing:.1em;
+    padding:.1em;
+}
+
+.downloadcontrol_askpw:focus ~ .downloadcontrol_pw {
+    display:block;
+}
+.downloadcontrol_size {
+    letter-spacing:0;
+    white-space: nowrap;
+}
+
+/* for links in a text line;
+text must be formatted as <div> */
+.downloadcontrol_inline {
+    display:inline;
+}
+.downloadcontrol_inline button,
+.downloadcontrol_table button {
+    cursor:pointer;
+    padding:0;
+    margin:0;
+    border:none;
+    background:none;
+    border-bottom:2px solid #aaf;
+    color:#00c;
+}
+.downloadcontrol_inline button:hover,
+.downloadcontrol_table button:hover {
+    border-color:red;
+    color:#a00;
+}
+.downloadcontrol_table {
+    display:inline-block;
+}
+@media screen and (max-width: 500px) {
+    .downloadcontrol_table {
+        width:100%;
+        overflow-y: auto;
+    }
+}
+.downloadcontrol_table p {
+    margin-bottom:2px;
+    font-weight:bold;
+}
+.downloadcontrol_table .dlc_table,
+.downloadcontrol_filecount {
+    border-collapse: collapse;
+    border:1px solid black;
+    margin-bottom:1em;
+}
+.downloadcontrol_table .dlc_table .dlc_th,
+.downloadcontrol_filecount th {
+    color:black;
+    background:#eee;
+    font-weight:bold;
+    border:1px solid black;
+}
+.downloadcontrol_table .dlc_table .dlc_td button {
+    max-width:14em;
+    text-align:left;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.downloadcontrol_table .dlc_table .dlc_td,
+.downloadcontrol_table .dlc_table .dlc_th {
+    max-width:14em;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding:.1em 1em .2em;
+    text-align: left;
+}
+
+.downloadcontrol_anchor {
+    display: block;
+    position: relative;
+    top: -150px;
+    visibility: hidden;
+}
+
+.dlc_table {
+    display: table;
+}
+.dlc_tr {
+    display: table-row;
+}
+.dlc_td,
+.dlc_th{
+    display: table-cell;
+}
+/* the responsiveness of the tables
+which are set as div-s */
+@media screen and (max-width:399px) {
+    .dlc_table {
+        display: block;
+    }
+    .dlc_tr {
+        display: block;
+        border:1px solid #888;
+        text-align: left;
+    }
+    .dlc_td,
+    .dlc_th{
+        display: inline-block;
+        border-right:1px solid #888;
+    }
+}
+
+/* backend only */
+.downloadcontrol_filecount td,
+.downloadcontrol_filecount th {
+    padding:.1em 1em .2em;
+    text-align: left;
+}
+.downloadcontrol_stats {
+    border-collapse: collapse;
+}
+.downloadcontrol_on {
+    border-style: inset ;
+    background:#eef;
+    color:black;
+}
+.downloadcontrol_shortcut {
+    border: 1px solid #888;
+    padding: .5em;
+    margin-bottom: 1em;
+    background:#fafafa;
+    color:black;
+}
+.downloadcontrol_shortcut input[type="text"],
+.downloadcontrol_shortcut select {
+    width:7em;
+    box-sizing:border-box;
+}
+.downloadcontrol_spacer {
+    margin-bottom:1em;
+}
