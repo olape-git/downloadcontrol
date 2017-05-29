@@ -6,7 +6,7 @@
  *
  */
 
-define('DOWNLOADCONTROL_VERSION','1.7');
+define('DOWNLOADCONTROL_VERSION','1.7.1');
 if (!isset($plugin_cf['downloadcontrol']['version'])
     || $plugin_cf['downloadcontrol']['version'] != DOWNLOADCONTROL_VERSION) {
     include_once $pth['folder']['plugins'] . 'downloadcontrol/config/defaultconfig.php';

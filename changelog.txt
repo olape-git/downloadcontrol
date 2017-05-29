@@ -77,5 +77,5 @@ October 2015
 - Added simple color selector for button and tables including color choice for an alternative button
 - Added defaultconfig.php so that no erromessages occur on installing the plugin
 
-
-
+1.7.1 - May 2017
+see <https://github.com/cmsimple-xh/downloadcontrol/milestone/1?closed=1>
