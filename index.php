@@ -19,7 +19,7 @@ if (!isset($plugin_cf['downloadcontrol']['version'])
  */
 function control($calledfile ='', $startDate = '', $endDate = '', $password = '', $style = '', $askname = '', $count = '', $countall = '') {
 
-    global $plugin_cf, $plugin_tx, $pth, $tx;
+    global $plugin_cf, $plugin_tx, $pth, $tx, $downloadcontrol_base_folder;
     $pcf = $plugin_cf['downloadcontrol'];
     $ptx = $plugin_tx['downloadcontrol'];
 
@@ -100,9 +100,11 @@ function control($calledfile ='', $startDate = '', $endDate = '', $password = ''
 
     $fileencoding = $pcf['alternative_file_name_encoding'];
 
-    $dlfolder = $pcf['downloadcontrol_base_folder']
-        ? trim($pcf['downloadcontrol_base_folder'],'/') .'/'
-        : '';
+    $dlfolder = isset($downloadcontrol_base_folder)
+        ? $downloadcontrol_base_folder
+        : ($pcf['downloadcontrol_base_folder']
+            ? trim($pcf['downloadcontrol_base_folder'],'/') .'/'
+            : '');
 
     // differentiation between $calledfile, which may have windows
     // encoding and $realfile, the resulting filename on the server
@@ -414,11 +416,13 @@ function control($calledfile ='', $startDate = '', $endDate = '', $password = ''
  */
 function Downloadcontrol_showFileSize($file)
 {
-    global $plugin_cf, $pth;
+    global $plugin_cf, $pth, $downloadcontrol_base_folder;
 
-    $dlfolder = $plugin_cf['downloadcontrol']['downloadcontrol_base_folder']
-        ? trim($plugin_cf['downloadcontrol']['downloadcontrol_base_folder'],'/') .'/'
-        : '';
+    $dlfolder = isset($downloadcontrol_base_folder)
+        ? $downloadcontrol_base_folder
+        : ($plugin_cf['downloadcontrol']['downloadcontrol_base_folder']
+            ? trim($plugin_cf['downloadcontrol']['downloadcontrol_base_folder'],'/') .'/'
+            : '');
 
     $size = filesize($pth['folder']['downloads'] . $dlfolder . $file);
     switch ($size) {

@@ -1017,9 +1017,9 @@ function Downloadcontrol_editColors()
 
 function Downloadcontrol_showColors()
 {
-    global $plugin_cf;
+    global $plugin_cf, $downloadcontrol_base_folder;
 	$o = '';
-	$plugin_cf['downloadcontrol']['downloadcontrol_base_folder'] = '../images/flags/';
+	$downloadcontrol_base_folder = '../images/flags/';
 
     $o .= '<hr><br>';
     $o .= 'button:<br>' . control("de.gif","","","","button") . '<br>';
@@ -1028,5 +1028,6 @@ function Downloadcontrol_showColors()
     $o .= 'inline:<br>' . control("de.gif","","","","inline") . '<br>';
     $o .= 'password:<br>' . control("de.gif","","","test") . '<br>';
     $o .= 'table:<br>' . control("de.gif,da.gif,en.gif");
+	unset($downloadcontrol_base_folder);
     return $o;
 }
