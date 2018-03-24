@@ -201,7 +201,7 @@ function control($calledfile ='', $startDate = '', $endDate = '', $password = ''
 
                 $name = isset($_SESSION['fullname']) && $_SESSION['fullname'] != ''
                      ? $_SESSION['fullname']
-					 : 'IP ' . ($pcf['get_anonym_Ip']== 'true' ? preg_replace('/[0-9]+\z/', '0', $_SERVER['REMOTE_ADDR']) : $_SERVER['REMOTE_ADDR']);
+		     : 'IP ' . ($pcf['get_anonym_Ip']== 'true' ? preg_replace('/[0-9]+\z/', '0', $_SERVER['REMOTE_ADDR']) : $_SERVER['REMOTE_ADDR']);
 
             if ($password && $_POST['dlcontrolpw' . $file_id] != trim($password)) {
                 $error = $ptx['error_password'];
