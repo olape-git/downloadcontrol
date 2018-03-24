@@ -22,5 +22,6 @@ $plugin_mcf['downloadcontrol']['multiple-links_ask_for_name']="bool";
 $plugin_mcf['downloadcontrol']['version']="hidden";
 $plugin_mcf['downloadcontrol']['backend_counter_order']="enum:alphabet,numbers";
 $plugin_mcf['downloadcontrol']['sync_dont_change_dlcounter_log']="bool";
+$plugin_mcf['downloadcontrol']['get_anonym_Ip']="bool";
 
 ?>
