@@ -27,6 +27,7 @@ $plugin_tx['downloadcontrol']['cf_alternative_file_name_encoding']="Die Code-Tab
 $plugin_tx['downloadcontrol']['cf_backend_headlines']="Abhängig vom benutzten Template kann man hier den gewünschten Überschriftenstil für das Downloadcontrol-Backend auswählen";
 $plugin_tx['downloadcontrol']['cf_backend_number_of_shortcuts']="Ohne Eintrag werden die Shortcuts ausgeschaltet";
 $plugin_tx['downloadcontrol']['cf_sync_dont_change_dlcounter_log']="Wenn Dlcounter installiert ist und auf \"Log-Sync mit Dlcounter_XH\" geklickt wird, vergleicht Downloadcountrol beide Logs und fügt jedem die jeweils fehlenden Einträge hinzu. Wenn man nicht möchte, dass am Dlcounter-Log etwas verändert wird, hier die Checkbox markieren.";
+$plugin_tx['downloadcontrol']['cf_get_anonym_Ip']="Ersetzt das letzte Oktett der IP-Adresse mit 0.";
 $plugin_tx['downloadcontrol']['cf_downloadcontrol_base_folder']="Pfad vom Standard-Download-Ordner zum Ordner für die zu schützenden Dateien. Wenn leer, ist der Standard-Downloads-Ordner auch der Basisordner von Downloadcontrol.";
 $plugin_tx['downloadcontrol']['cf_email_from']="Die (Fake-) Absenderadresse der Benachrichtigungsmails";
 $plugin_tx['downloadcontrol']['cf_email_send']="Wenn diese Option ausgewählt ist, wird bei jedem Download eine Benachrichtigung gesendet";
